@@ -7,23 +7,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int nbOne;
-        int nbTwo;
-        int nbThree;
+        int nombre;
 
         try {
             System.out.print("Entrez le premier nombre : ");
-            nbOne = scanner.nextInt();
-
-            System.out.print("Entrez le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
+            nombre = scanner.nextInt();
             scanner.close();
 
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
+            for (int i = 0; i < 11; i++) {
+                int result = nombre * i;
+                System.out.println(nombre + " x " + i + " = " + result);
 
-            System.out.println(result);
+            }
+
+
         } catch (InputMismatchException e) {
             System.out.println("Attention ! Tu es sencé mettre un nombre entier");
         } catch (Exception e) {
