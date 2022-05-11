@@ -14,13 +14,20 @@ public class Main {
             nombre = scanner.nextInt();
             scanner.close();
 
-            for (int i = 0; i < 11; i++) {
+            // avec la boucle for l'utilisateur devra rafraichir la page pour avoir de nouveau la question
+            // plutôt une boucle while pour demander à chaque fois que l'utilisateur se trompe
+
+            for (int i = 0; i <= 10; i++) {
                 int result = nombre * i;
+
                 System.out.println(nombre + " x " + i + " = " + result);
 
+/*              !!! Pas arrivé à faire affichage avec string.format à revoir !!!
+                String resultToFormat = "%d x %d = %d";
+                String result = String.format(resultToFormat, nombre, i);
+*/
+
             }
-
-
         } catch (InputMismatchException e) {
             System.out.println("Attention ! Tu es sencé mettre un nombre entier");
         } catch (Exception e) {
