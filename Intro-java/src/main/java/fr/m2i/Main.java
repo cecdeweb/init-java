@@ -1,25 +1,33 @@
 package fr.m2i;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-/* instancier un objet scanner
-Scanner scanner = new Scanner(System.in);
-demander un premier nombre
-demander un deuxième nombre
-utiliser une méthode du scanner pour réaliser l’opération et retourner le résultat */
+        int nbOne;
+        int nbTwo;
+        int nbThree;
 
-        System.out.println("Saisissez un premier nombre: ");
-        Scanner nombre1 = new Scanner(System.in);
-        int nb1=nombre1.nextInt();
+        try {
+            System.out.print("Entrez le premier nombre : ");
+            nbOne = scanner.nextInt();
 
-        System.out.println("Saisissez un deuxième nombre: ");
-        Scanner nombre2 = new Scanner(System.in);
-        int nb2=nombre2.nextInt();
+            System.out.print("Entrez le deuxieme nombre : ");
+            nbTwo = scanner.nextInt();
+            scanner.close();
 
-        System.out.println("Résultat :" + nb1*nb2);
+            nbThree = nbOne * nbTwo;
+            String resultToFormat = "Résultat : %d * %d = %d";
+            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
 
+            System.out.println(result);
+        } catch (InputMismatchException e) {
+            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
