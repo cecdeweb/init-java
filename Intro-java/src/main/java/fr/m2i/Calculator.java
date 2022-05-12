@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    public final List<String> handledOperators = new ArrayList<String>() {{
+    private final List<String> handledOperators = new ArrayList<String>() {{
         add("+");
         add("-");
         add("*");
@@ -25,7 +25,7 @@ public class Calculator {
         System.out.println(String.format("Résultat : %d", result));
     }
 
-    public Long retrieveRequestedOperation() {
+    private Long retrieveRequestedOperation() {
         Scanner scanner = new Scanner(System.in);
 
         Long firstNumber = null;
@@ -65,7 +65,7 @@ public class Calculator {
         return calculate(firstNumber, secondNumber, operator);
     }
 
-    public Long calculate(Long firstNumber, Long secondNumber, String operator) {
+    protected Long calculate(Long firstNumber, Long secondNumber, String operator) {
 
         Long result;
 
