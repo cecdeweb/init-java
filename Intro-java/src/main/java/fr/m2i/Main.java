@@ -5,29 +5,22 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
+        Calculator calcul = new Calculator(); // appeler sa class
 
-        int nbOne;
-        int nbTwo;
-        int nbThree;
+        int nbr1=0;
+        int nbr2=0;
 
-        try {
-            System.out.print("Entrez le premier nombre : ");
-            nbOne = scanner.nextInt();
+        System.out.println("Taper un premier nombre :");
+        nbr1 = scanner.nextInt();
+        System.out.println("Taper un deuxième nombre :");
+        nbr2 = scanner.nextInt();
 
-            System.out.print("Entrez le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
-            scanner.close();
+        System.out.println(calcul.addition(nbr1, nbr2));
+        System.out.println(calcul.multiplication(nbr1, nbr2));
+        System.out.println(calcul.soustract(nbr1, nbr2));
+        System.out.println(calcul.division(nbr1, nbr2));
 
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
-
-            System.out.println(result);
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 }
