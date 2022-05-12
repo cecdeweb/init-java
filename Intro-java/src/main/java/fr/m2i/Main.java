@@ -5,29 +5,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        int nbOne;
-        int nbTwo;
-        int nbThree;
+        Apple a = new Apple();
+        a.taste();
+        a.miam();
 
-        try {
-            System.out.print("Entrez le premier nombre : ");
-            nbOne = scanner.nextInt();
+        PineApple b = new PineApple();
+        b.taste();
+        b.miam();
 
-            System.out.print("Entrez le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
-            scanner.close();
-
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
-
-            System.out.println(result);
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 }
