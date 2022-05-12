@@ -1,33 +1,80 @@
 package fr.m2i;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
+
+        Calculator myCalculator = new Calculator();
         Scanner scanner = new Scanner(System.in);
 
-        int nbOne;
-        int nbTwo;
-        int nbThree;
+        Integer result = null;
 
-        try {
-            System.out.print("Entrez le premier nombre : ");
-            nbOne = scanner.nextInt();
+        Integer firstNumber = null;
+        Integer secondNumber = null;
+        String operator = null;
 
-            System.out.print("Entrez le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
-            scanner.close();
+        List<String> handledOperators = new ArrayList<String>();
 
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
+        handledOperators.add("+");
+        handledOperators.add("-");
+        handledOperators.add("*");
+        handledOperators.add("/");
 
-            System.out.println(result);
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        // On boucle tant que l'utilisateur ne rentre pas de valeur valide
+        while (firstNumber == null || secondNumber == null || operator == null) { // Tant que firstNumber, secondNumber et operator sont vides on reste à l'interieur de la boucle
+            try {
+                System.out.print("Saisir le premier nombre : ");
+                firstNumber = scanner.nextInt();
+
+                System.out.print("Saisir le deuxieme nombre : ");
+                secondNumber = scanner.nextInt();
+
+                System.out.print("Saisir l'opérateur arithmetique (+, -, *, /) : ");
+                operator = scanner.next();
+
+                // On cherche a savoir si l'opérateur entré par l'utilisateur est dans la liste des opérateurs que l'on sait gérer
+                // On inverse avec le ! la valeur de retour de la method contains afin de rentrer dans notre gestion d'erreur
+                // dans le cas où l'opérateur n'est pas la liste
+                if (!handledOperators.contains(operator)) {
+                    System.out.println(String.format("Votre opérateur [%s] n'est pas valide !\n", operator));
+                    operator = null; // On force la variable operator à null pour pouvoir continuer à itérer dans notre boucle
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("Désolé votre entré n'est pas valide\n");
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Une erreur est survenue\n");
+                return;
+            }
         }
+
+        scanner.close();
+
+        switch (operator) {
+
+            case "+":
+                result = myCalculator.sum(firstNumber, secondNumber);
+                break;
+
+            case "-":
+                result = myCalculator.subtract(firstNumber, secondNumber);
+                break;
+
+            case "*":
+                result = myCalculator.multiply(firstNumber, secondNumber);
+                break;
+
+            case "/":
+                result = myCalculator.divide(firstNumber, secondNumber);
+                break;
+        }
+
+        System.out.println(String.format("Opération demandée : %d %s %d", firstNumber, operator, secondNumber));
+        System.out.println(String.format("Résultat : %d", result));
     }
 }
