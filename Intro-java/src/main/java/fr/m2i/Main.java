@@ -1,31 +1,16 @@
 package fr.m2i;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        int nbOne;
-        int nbTwo;
-        int nbThree;
+    public static void main(String[] args) {
+        Car car = new Car();
+
+        car.setSpeed(90);
+        car.setGasConsumption(5.5f);
+        car.setCurrentGas(50);
 
         try {
-            System.out.print("Entrez le premier nombre : ");
-            nbOne = scanner.nextInt();
-
-            System.out.print("Entrez le deuxieme nombre : ");
-            nbTwo = scanner.nextInt();
-            scanner.close();
-
-            nbThree = nbOne * nbTwo;
-            String resultToFormat = "Résultat : %d * %d = %d";
-            String result = String.format(resultToFormat, nbOne, nbTwo, nbThree);
-
-            System.out.println(result);
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
+            car.drive();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
