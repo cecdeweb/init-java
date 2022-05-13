@@ -60,9 +60,11 @@ public class Calculator {
                     operator = null; // On force la variable operator à null pour pouvoir continuer à itérer dans notre boucle
                 }
             } catch (InputMismatchException ime) {
+                // retourne une exception mathématique
                 System.out.println("Désolé votre entré n'est pas valide\n");
                 scanner.nextLine();
             } catch (Exception e) {
+                // pour toutes autres exceptions
                 System.out.println("Une erreur est survenue lorsqu'on récupère les entrés de l'utilisateur\n");
                 return null;
             }
