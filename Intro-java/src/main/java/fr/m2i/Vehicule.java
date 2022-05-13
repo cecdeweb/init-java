@@ -13,19 +13,22 @@ public abstract class Vehicule {
     // methods
 
     public abstract void accelerate();
+    // method abstract dont accept function
     public abstract void brake();
     public void refuel(){
-        // capacité essence véhicule
+        // max capacité essence véhicule
         currentGas = gasCapacity;
     }
     public void drive() throws Exception{
+
         if (currentGas < gasConsumption){
             throw new Exception("Pas assez d'essence !");
         }
 
         accelerate();
 
-        currentGas -= (gasConsumption*speed)/100;
+        float consumption = (gasConsumption*speed)/100;
+        currentGas -= consumption;
         System.out.println(String.format("Le véhicule consomme : %f L", gasConsumption));
 
     }
