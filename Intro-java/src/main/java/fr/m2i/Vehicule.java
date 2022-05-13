@@ -4,11 +4,31 @@ public abstract class Vehicule {
 
     // attributs
 
-    protected float currentGas;
-    protected float gasCapacity;
-    protected float gasConsumption;
-    protected int speed;
-    protected int passengerCapacity;
+    protected float currentGas; // essence actuelle
+    protected float gasCapacity; // taille réservoir
+    protected float gasConsumption; // consommation l/100
+    protected int speed; // km
+    protected int passengerCapacity; // places
+
+    // methods
+
+    public abstract void accelerate();
+    public abstract void brake();
+    public void refuel(){
+        // capacité essence véhicule
+        currentGas = gasCapacity;
+    }
+    public void drive() throws Exception{
+        if (currentGas < gasConsumption){
+            throw new Exception("Pas assez d'essence !");
+        }
+
+        accelerate();
+
+        currentGas -= (gasConsumption*speed)/100;
+        System.out.println(String.format("Le véhicule consomme : %f L", gasConsumption));
+
+    }
 
     // getters and setters
 
