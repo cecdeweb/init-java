@@ -2,8 +2,7 @@ package fr.m2i;
 
 public abstract class Fruit {
 
-    String seed="";
-
+    private String seed="";
     private String name;
 
     public Fruit(String name){
