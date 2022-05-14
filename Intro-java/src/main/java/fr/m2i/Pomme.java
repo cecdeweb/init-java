@@ -2,9 +2,8 @@ package fr.m2i;
 
 public class Pomme extends Fruit {
 
-    @Override
-    public String name() {
-        return "pomme";
+    public Pomme() {
+        super("pomme");
     }
 
     @Override
