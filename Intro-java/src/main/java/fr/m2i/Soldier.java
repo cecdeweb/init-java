@@ -14,8 +14,14 @@ public class Soldier extends BrawlerCharacter{
     }
 
     @Override
+    public void ennemy(Integer healthPoint) {
+        healthPoint=4;
+    }
+
+    @Override
     public Integer attack() {
-        return attackDamage;
+        return 1;
+        //    return attackDamage;
     }
 }
 

@@ -3,25 +3,25 @@ package fr.m2i;
 public abstract class BrawlerCharacter {
 
     private String name;
-    private Integer healthPoint=10; // points de vie
-    private Integer moveSpeed=1; // vitesse de déplacement ?
+    private Integer healthPoint=10;
+    // points de vie incrémentation gérée dans wizard
+    private Integer moveSpeed=1;
+    // vitesse de déplacement je m'en occupe pas pour le moment
     public String sentence;
 
-    /*
-       public abstract String brawlerCharacter(String, Integer, Integer);
-       Je suppose que c'est pour afficher : Il reste x points de vie au soldier et il attaque de x points son adversaire
-    */
+    public abstract void ennemy(Integer healthPoint);
+    //   je récupère pour l'instant que les points de vie
+    //   les paramètres de l'adversaire
+
+
     public abstract Integer attack(); // methode à définir dans class enfant
 
     public String speak(){
         return sentence;
     };
-/*
    public Integer move(){
        return 1;
    }
-*/
-
 
     public String getName() {
         return name;
@@ -31,8 +31,8 @@ public abstract class BrawlerCharacter {
         return healthPoint;
     }
 
-    public void setHealthPoint(Integer healthPoint, Integer attackDamage) {
-        this.healthPoint = healthPoint-attackDamage;
+    public void setHealthPoint(Integer healthPoint) {
+        this.healthPoint = healthPoint;
     }
 }
 

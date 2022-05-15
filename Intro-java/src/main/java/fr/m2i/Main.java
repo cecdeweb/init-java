@@ -3,10 +3,16 @@ package fr.m2i;
 public class Main {
     public static void main(String[] args) {
 
-        Soldier Carja = new Soldier();
-        Wizard Sylens = new Wizard();
-        System.out.println(Carja.getName() + " : " + Carja.speak() + " J'attaque de " + Carja.attack() + ". Il me reste " + Carja.getHealthPoint() + " de points de vie.");
-        System.out.println(Sylens.getName() + " : " + Sylens.speak() + " J'attaque de " + Sylens.attack() + ". Il me reste " + Sylens.getHealthPoint() + " de points de vie.");
+        Wizard wizard = new Wizard();
+        //wizard.getHealthPoint()=10;
+        System.out.println(wizard.speak());
+        wizard.ennemy(2); // attack points
+
+/*
+        System.out.println(wizard.attack());
+        System.out.println("getHealthPoint");
+        System.out.println(wizard.healtEnnemy);
+*/
 
     }
 
