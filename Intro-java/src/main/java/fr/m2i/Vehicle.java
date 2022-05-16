@@ -8,6 +8,15 @@ public abstract class Vehicle {
     protected int speed;
     protected int passengerCapacity;
 
+    public Vehicle(){};
+
+    public Vehicle(float gasCapacity, int passengerCapacity) {
+        if (gasCapacity > 0 && passengerCapacity > 0) {
+            this.gasCapacity = gasCapacity;
+            this.passengerCapacity = passengerCapacity;
+        }
+    }
+
     public abstract void accelerate();
 
     public abstract void brake();
@@ -15,7 +24,8 @@ public abstract class Vehicle {
     public void refuel() {
         currentGas = gasCapacity;
     }
-
+    // Je suis partie sur cette façon de faire pour le drive
+    // Je vous encourage a essayer de faire quelque chose de plus intelligent ;)
     public void drive() throws Exception {
 
         if (currentGas < gasConsumption) {
@@ -70,4 +80,9 @@ public abstract class Vehicle {
     public void setPassengerCapacity(int passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
+    public void showStats() {
+        String stats = "Current Gas : %.1f\nGas capacity : %.1f\nGas consumption : %.1f\nPassenger capacity : %d\nSpeed : %d\n";
+        System.out.print(String.format(stats, currentGas, gasCapacity, gasConsumption, passengerCapacity, speed));
+    }
+
 }

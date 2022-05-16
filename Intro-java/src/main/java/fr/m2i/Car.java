@@ -2,13 +2,36 @@ package fr.m2i;
 
 public class Car extends Vehicle {
 
-    @Override
-    public void accelerate() {
-        System.out.println("Vrooooom !");
+
+    public Car() {
+        this.currentGas = 50;
+        this.gasCapacity = 50f;
+        this.speed = 0;
+        this.gasConsumption = 7f;
+        this.passengerCapacity = 5;
     }
 
+    public Car(float gasCapacity, int passengerCapacity){
+        super(gasCapacity, passengerCapacity);
+        this.currentGas = gasCapacity;
+        this.gasConsumption = 7f;
+        this.speed = 0;
+    }
+
+
+    @Override
+    public void accelerate() {
+            speed+=20;
+        if (speed >= 220){
+            speed = 220;
+        }
+    }
     @Override
     public void brake() {
-        System.out.println("Je freine");
+        speed -= 20;
+
+        if (speed <= 0) {
+            speed = 0;
+        }
     }
 }
