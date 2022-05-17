@@ -14,22 +14,29 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        int a, b, c;
-        int delta;
+        double a, b, c;
+        double delta;
+        double x1, x2;
 
-        System.out.println("Donnez la valeur de >>> a <<< dans l'équation ax2 + bx + c : ");
-        a=scan.nextInt();
-        System.out.println("Donnez la valeur de >>> b <<< dans l'équation ax2 + bx + c : ");
-        b=scan.nextInt();
-        System.out.println("Donnez la valeur de >>> c <<< dans l'équation ax2 + bx + c : ");
-        c=scan.nextInt();
-        delta=(b*b)-(4*a*c);
+        while (true) { // pour eviter de relancer la console pour tester code
+            System.out.println("Donnez la valeur de >>> a <<< dans l'équation ax2 + bx + c : ");
+            a = scan.nextInt();
+            System.out.println("Donnez la valeur de >>> b <<< dans l'équation ax2 + bx + c : ");
+            b = scan.nextInt();
+            System.out.println("Donnez la valeur de >>> c <<< dans l'équation ax2 + bx + c : ");
+            c = scan.nextInt();
+            delta = (b * b) - (4 * a * c);
 
-        if(delta<0){
-
+            if (delta == 0) {
+                x1 = -(b / (2 * a));
+                System.out.println("L'équation ax2 + bx + c = 0 a une solution unique : x1 = " + x1);
+            } else if (delta > 0) {
+                x1 = ((-b - Math.sqrt(delta)) / 2 * a);
+                x2 = ((-b + Math.sqrt(delta)) / 2 * a);
+                System.out.println("L'équation ax2 + bx + c = 0 a deux solutions distinctes : x1 = " + x1 + "  et  x2 = " + x2);
+            } else {
+                System.out.println("L'équation ax2 + bx + c = 0 n'a pas de solution réelle");
+            }
         }
-
-
-
     }
 }
