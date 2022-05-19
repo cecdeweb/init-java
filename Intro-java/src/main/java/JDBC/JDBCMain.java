@@ -1,32 +1,74 @@
 package JDBC;
 
+
 import java.sql.*;
+import java.util.Scanner;
 
 public class JDBCMain {
     public static void main(String[] args) {
+        var input=new Scanner(System.in);
+        System.out.println("Combien des clients souhaitez-vous stocker?");
+        var nombreClientsAInserer=input.nextInt();
+        input.nextLine();
 
-        Connection connection = null; // demande de connexion bdd
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/poe_ang_v1", "root", ""); // utilise url jdbc (driver) : pour cibler mysql : ip local (127.0.0.1) : port mysql / nom database, admin, mdp
-            // établi et maintien la connexion - contien toutes les info de connexion
-            System.out.println("Connexion établie");
+        Connection connection=null;
 
-            Statement statement = connection.createStatement();
-            // requete sql - contient method executeQuery()
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM orders");
-            while (resultSet.next()){ // tant qu'il y a quelque chose après dans ma requête
-                int id=resultSet.getInt("id"); // variable id qui récupère le champ id
-                String typePresta=resultSet.getString("typePresta");
-                String designation=resultSet.getString("designation");
-                int nombreJours= resultSet.getInt("NbDays");
-                int prixUnitaire=resultSet.getInt("unitPrice");
+        while (nombreClientsAInserer>0){
+            System.out.print("Votre société : ");
+            var company=input.nextLine();
 
-                System.out.printf("ID : %d\nTypre de prestation : %s\nDesignation : %s\n\n", id, typePresta, designation);
+            System.out.print("Votre nom : ");
+            var lastName=input.nextLine();
 
+            System.out.print("Votre prenom : ");
+            var firstName=input.nextLine();
+
+            System.out.print("Votre adresse email : ");
+            var email=input.nextLine();
+
+            System.out.print("Votre numéro de téléphone : ");
+            var phoneNumber=input.nextLine();
+
+
+            System.out.print("Votre adresse: ");
+            var address=input.nextLine();
+
+            System.out.println("Votre code postal: ");
+            var zipCode=input.nextLine();
+
+            System.out.println("Votre ville: ");
+            var city=input.nextLine();
+
+            System.out.println("Votre pays: ");
+            var country=input.nextLine();
+
+
+            try{
+                connection= DriverManager.getConnection("jdbc:mysql://localhost:3306" +
+                        "/poe_ang_v1","root","");
+
+                PreparedStatement statement=connection.prepareStatement("INSERT INTO " +
+                        "`clients` (`companyName`, `firstName`, `lastName`, " +
+                        "`email`, `phone`, `address`, `zipCode`, `city`, `country`, " +
+                        "`state`) VALUES(?,?,?,?,?,?,?,?,?,?)");
+                statement.setString(1,company);
+                statement.setString(2,firstName);
+                statement.setString(3,lastName);
+                statement.setString(4,email);
+                statement.setString(5,phoneNumber);
+                statement.setString(6,address);
+                statement.setString(7,zipCode);
+                statement.setString(8,city);
+                statement.setString(9,country);
+                statement.setInt(10,0);
+
+                statement.executeUpdate();
+                nombreClientsAInserer--;
+
+            }catch (SQLException e){
+                System.out.println(e.getMessage());
             }
-        } catch (SQLException e) {
-            System.out.println("Erreur de connexion");
-            System.out.println(e.getMessage());
+
         }
     }
 }
