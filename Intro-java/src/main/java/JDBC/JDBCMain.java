@@ -21,16 +21,20 @@ public class JDBCMain {
 
         var input = new Scanner(System.in);
 
-        System.out.println("1- Afficher les clients\n 2- Entrer un client\n 3- Appeler un client par son ID " +
-                "\n 4- Supprimer un client par son ID \n 5- Mettre à jour les données d'un client par son ID \n Que souhaitez-vous faire ? Tapez le numéro de votre choix :");
+        System.out.println("1- Afficher les clients\n2- Entrer un client\n3- Appeler un client par son ID " +
+                "\n4- Supprimer un client par son ID \n5- Mettre à jour les données d'un client par son ID \nQue souhaitez-vous faire ? Tapez le numéro de votre choix :");
         var choice = input.nextInt();
 
-        switch (choice){
+            switch (choice){
 
-            case 1:
-                System.out.println("choix 1");
-                System.out.println(getListClients().toString());
-        }
+                case 1:
+                    System.out.println("choix 1");
+                    System.out.println(getListClients().toString());
+                    break;
 
+                case 2:
+                    System.out.println("choix 2");
+                    System.out.println(getListClientById().toString());
+            }
         }
-    }
+   }
