@@ -11,10 +11,15 @@ public class Main {
         ClientDao clientDao=new ClientDao();
 
         ArrayList<Client> clients=clientDao.getAll();
-
         for(Client client:clients){
             System.out.println(client);
         }
+/*
+        int id = 2;
+        ArrayList<Client> clients=clientDao.getById(id);
+
+        System.out.println(clients);
+*/
 
     }
 }

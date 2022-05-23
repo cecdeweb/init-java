@@ -110,6 +110,6 @@ public class Client extends BaseModel {
                 " zipCode = " + zipCode + "\n" +
                 " city = " + city + "\n" +
                 " country = " + country + "\n" +
-                " state = " + state;
+                " state = " + state + "\n" + "\n" ;
     }
 }
