@@ -14,7 +14,7 @@
     <h1 class="m-5">Créer votre compte</h1>
 
     <div class="container form-style-5">
-        <form class="form-control-lg">
+        <form class="form-control-lg was-validated">
             <!-- 
                 - nom
                 - prenom
@@ -25,27 +25,36 @@
                 - Pays
             -->
             <div class="form-control-lg my-2">
-                <label class="form-label" for="nom">Nom :</label><input class="form-control" name="nom" id="nom" type="text" />
+                <label class="form-label" for="nom">Nom :</label>
+                <input class="form-control is-invalid" name="nom" id="nom" type="text" />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback is-invalid">
+                    Merci de saisir votre nom.
+                </div>                
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="prenom">Prenom :</label>
-                <input class="form-control" name="prenom" id="prenom" type="text" />
+                <input class="form-control is-invalid" name="prenom" id="prenom" type="text" />
+                <div id="validationServerUsernameFeedback" class="invalid-feedback is-invalid">
+                    Merci de saisir votre prénom.
+                </div>                
+
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="lieu-naissance">Lieu de Naissance :</label>
-                <input class="form-control" name="lieu-naissance" id="lieu-naissance" type="text" />
+                <input class="form-control is-invalid" name="lieu-naissance" id="lieu-naissance" type="text" />
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="date-naissance">Date de Naissance :</label>
-                <input class="form-control" name="date-naissance" id="date-naissance" type="date" />
+                <input class="form-control is-invalid" name="date-naissance" id="date-naissance" type="date" />
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="Pays-origine">Pays d'origine :</label>
-                <input class="form-control" name="Pays-origine" id="Pays-origine" type="text" />
+                <input class="form-control is-invalid" name="Pays-origine" id="Pays-origine" type="text" />
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="">Civilité : </label>
-                <select class="form-control" name="civilite">
+                <select class="form-control is-invalid" name="civilite">
+                    <option value="null"></option>
                     <option value="mr">Monsieur</option>
                     <option value="mm">Madame</option>
                     <option value="ml">Mademoiselle</option>
@@ -53,11 +62,11 @@
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="note-bac">Pourcentage ou moyenne obtenu au BAC :</label>
-                <input class="form-control" name="note-bac" id="note-bac" type="number" />
+                <input class="form-control is-invalid" name="note-bac" id="note-bac" type="number" />
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="formation">Formation :</label>
-                <input class="form-control" name="formation" id="formation" type="text" />
+                <input class="form-control is-invalid" name="formation" id="formation" type="text" />
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="autre-formation">Autres choix de formation possibles :</label>
@@ -69,37 +78,40 @@
                     <div id="validationServerUsernameFeedback" class="invalid-feedback">
                         Merci d'utiliser un email valide.
                     </div>
+                    <div id="validationServerUsernameFeedback" class="valid-feedback">
+                        Email correct.
+                    </div>
 
             </div>
             <div class="form-control-lg my-2">
                 <div class="form-check-inline">
-                    <label class="col-auto" for="telephone">Téléphone :</label>
+                    <label class="col-auto is-invalid" for="telephone">Téléphone :</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-control" name="telephone" id="telephone" type="number" />
+                    <input class="form-control is-invalid" name="telephone" id="telephone" type="number" />
                 </div>
-                <div id="emailHelp" class="form-text form-check-inline">Exemple : 0600000000</div>
+                <div id="emailHelp" class="form-text form-check-inline is-invalid">Exemple : 0600000000</div>
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="lettre-motiv">Lettre de motivation :</label>
-                <textarea class="form-control" id="lettre-motiv"></textarea>
+                <textarea class="form-control is-invalid" id="lettre-motiv"></textarea>
             </div>
             <div class="form-control-lg my-2">
                 <div class="form-check-inline">
                     <label>Civilité : </label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input" name="active" id="oui" type="radio" value="oui" />
+                    <input class="form-check-input  is-invalid" name="active" id="oui" type="radio" value="oui" />
                     <label class="">Oui</label>
                 </div>
                 <div class="form-check-inline">
-                    <input class="form-check-input" name="active" id="non" type="radio" value="non"/>
+                    <input class="form-check-input  is-invalid" name="active" id="non" type="radio" value="non"/>
                     <label class="">Non</label>
                 </div>  
             </div>
             <div class="form-control-lg my-2">
                 <label class="form-label" for="">Pays : </label>
-                <select class="form-control" name="pays">
+                <select class="form-control  is-invalid" name="pays">
                     <option value="fr">France</option>
                     <option value="it">Italie</option>
                     <option value="ch">Chine</option>
