@@ -1,8 +1,5 @@
 package fr.m2i;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -28,6 +25,5 @@ public class Main {
         for (int i = 1; i<= 10; i++){
             System.out.println(String.format("%d x %d = %d", number, i, number * i));
         }
-
     }
 }
