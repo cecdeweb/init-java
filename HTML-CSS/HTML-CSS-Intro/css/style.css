@@ -1,24 +1,22 @@
-h1{
-animation: 3s ease-in-out 1s 1 slidein;
+.box {
+  padding: 20px 30px;
+  background-color: #3498db ;
+  color:white;
+  font-weight:900;
+  font-size:60px;
+  cursor:pointer;
+  animation: hinge 2.2s 1 ease-in-out;
+  transform-origin:top left;
+  border-radius:5px;
 }
-/* duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
-@keyframes slidein {
-    from {
-        margin-left: 100%;
-        width: 100%;
-        color: #fff;
-    }
-
-    to {
-        margin-left: 0%;
-        width: 100%;
-        color: #000;
-    }
-}
-/* css form */
-form .form-control-lg{
-    background-color: #eeeeef;
-}
-form  div.submit{
-    background-color: #fff;
+  @keyframes hinge {
+  20%,60% {
+    transform: rotate(70deg);
+  } 40%,80% {
+    transform: rotate(55deg);
+    opacity:1;
+  } 100% {
+    transform: translateY(600px);
+    opacity:0;
+  }
 }
