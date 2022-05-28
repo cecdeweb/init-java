@@ -2,35 +2,28 @@ package fr.m2i;
 
 public class Main {
     public static void main(String[] args) {
-      
+
         Scanner scanner = new Scanner(System.in);
+        Integer number=null;
+        // int primitif pas null
 
-        int nombre;
+        while (number == null) {
 
-        try {
-            System.out.print("Entrez le premier nombre : ");
-            nombre = scanner.nextInt();
-            scanner.close();
-
-            // avec la boucle for l'utilisateur devra rafraichir la page pour avoir de nouveau la question
-            // plutôt une boucle while pour demander à chaque fois que l'utilisateur se trompe
-
-            for (int i = 0; i <= 10; i++) {
-                int result = nombre * i;
-
-                System.out.println(nombre + " x " + i + " = " + result);
-
-/*              * Pas arrivé à faire affichage avec string.format à revoir
-                String resultToFormat = "%d x %d = %d";
-                String result = String.format(resultToFormat, nombre, i);
-*/
-
+            try {
+                System.out.print("Entrez votre nombre :");
+                number = scanner.nextInt(); // Exception potentiellement levée, donc la variable number reste à null
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Attention ! vous devez saisir un nombre !");
+                scanner.nextLine();
+            } catch (Exception e) {
+                System.out.println("Mince une erreur !");
+                return;
             }
-        } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es censé mettre un nombre entier");
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
         }
-
+        scanner.close();
+        for (int i = 1; i<= 10; i++){
+            System.out.println(String.format("%d x %d = %d", number, i, number * i));
+        }
     }
 }
