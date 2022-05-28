@@ -1,10 +1,8 @@
 package fr.m2i;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
+      
         Scanner scanner = new Scanner(System.in);
 
         int nombre;
@@ -22,16 +20,17 @@ public class Main {
 
                 System.out.println(nombre + " x " + i + " = " + result);
 
-/*              !!! Pas arrivé à faire affichage avec string.format à revoir !!!
+/*              * Pas arrivé à faire affichage avec string.format à revoir
                 String resultToFormat = "%d x %d = %d";
                 String result = String.format(resultToFormat, nombre, i);
 */
 
             }
         } catch (InputMismatchException e) {
-            System.out.println("Attention ! Tu es sencé mettre un nombre entier");
+            System.out.println("Attention ! Tu es censé mettre un nombre entier");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
