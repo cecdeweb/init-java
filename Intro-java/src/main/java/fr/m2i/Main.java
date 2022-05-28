@@ -1,22 +1,27 @@
 package fr.m2i;
 
-public class Main {
+import java.util.Scanner;
 
+public class Main {
     public static void main(String[] args) {
 
-        Soldier matteo = null;
-        Wizard cecile = new Wizard("Cécile", 89, 95, 68);
+/**
+*  Ecrire un programme Java qui demande à l'utilisateur de saisir la valeur du diamètre, et qui ensuite va effectuer le calcul de la surface.
+*  Surface = Rayon x Rayon x PI;
+*  Rayon = Diamètre / 2
+**/
+        Scanner scanner = new Scanner(System.in);
 
-        cecile.move();
-        cecile.attack(matteo);
+        double rayon;
+        double surface = 0;
+        double pi = Math.PI;
 
-/*
-        Soldier matteo = new Soldier("Mettéo", 100, 78, 45);
-        Wizard cecile = new Wizard("Cécile", 89, 95, 68);
+        System.out.print("Entrez le rayon du cercle : ");
+        rayon = scanner.nextInt();
+        surface = pi * rayon * rayon;
+        System.out.println("La surface du cercle est : "+surface);
 
-        cecile.move();
-*/
-        cecile.attack(matteo);
+        // voir pour afficher un float à 2 décimal en sortie
 
     }
 }
