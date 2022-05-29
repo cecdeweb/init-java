@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
 /*
 *        Ecrire un programme Java qui déclare 3 variables, a,b,c et qui va ensuite effectuer une permutation de ces valeurs :
 *        Exemple :
@@ -37,6 +36,5 @@ public class Main {
         b=permut;
 
         System.out.println("Les valeurs permutées sont : " + "a = " + a + ", b = " + b + ", c = " + c);
-
     }
 }
