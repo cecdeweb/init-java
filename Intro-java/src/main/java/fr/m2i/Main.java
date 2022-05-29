@@ -4,37 +4,33 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
 /*
-*        Ecrire un programme Java qui déclare 3 variables, a,b,c et qui va ensuite effectuer une permutation de ces valeurs :
-*        Exemple :
-*        Entrez la première valeur(a) : 51
-*        Entrez la deuxième valeur(b) : 876
-*        Entrez la troisième valeur(c) : 235
-*        Les valeurs entrées sont : a = 51, b = 876 et c = 235
-*        Permutation: b <== a, c <== b, a <== c
-*        Les valeurs permutées sont : a = 235, b = 51 et c = 876
-***/
+*       Ecrivez un programme Java qui lit un nombre et
+*       indique s'il est positif, négatif ou s'il vaut zéro
+*       et s'il est pair ou impair.
+*/
+
+        int number=0;
+
         Scanner scan = new Scanner(System.in);
 
-        int a, b, c;
-        int permut=0;
+        System.out.println("Entrer un nombre entier : ");
+        number=scan.nextInt();
 
-        System.out.println("Entrez la première valeur(a) :");
-        a=scan.nextInt();
-        System.out.println("Entrez la première valeur(b) :");
-        b=scan.nextInt();
-        System.out.println("Entrez la première valeur(c) :");
-        c=scan.nextInt();
-
-        // Permutation: b <== a, c <== b, a <== c
-        //  a = 51, b = 876 et c = 235
-        //  a = 235 b = 51  c = 876
-
-        permut=a;
-        a=c;
-        c=b;
-        b=permut;
-
-        System.out.println("Les valeurs permutées sont : " + "a = " + a + ", b = " + b + ", c = " + c);
+        //positif, négatif, pair et impair
+        if (number<0 && number%2==0){
+            System.out.println("Votre nombre est négatif et pair.");
+        } else if (number<0 && number%2!=0){
+            System.out.println("Votre nombre est négatif et impair.");
+        } else if (number>0 && number%2!=0){
+            System.out.println("Votre nombre est positif et impair.");
+        } else if (number>0 && number%2==0){
+            System.out.println("Votre nombre est positif et pair.");
+        } else if (number==0){
+            System.out.println("Le nombre est zéro (et il est pair).");
+        } else {
+            System.out.println("Votre nombre n'est pas un entier.");
+        }
     }
 }
