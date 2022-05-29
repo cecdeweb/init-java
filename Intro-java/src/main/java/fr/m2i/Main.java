@@ -1,58 +1,67 @@
 package fr.m2i;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.UUID;
 
 public class Main {
     public static void main(String[] args) {
-        var input=new Scanner(System.in);
-        System.out.print("Combien d'employés souhaitez-vous enregistrer?");
-        var nombreEmployes=input.nextInt();
 
-        Employe[] employes=new Employe[nombreEmployes];
-        employes[0]=new Employe(1,"Christian","Lisangola");
+        int i = 0;
 
-        for(int i=0;i<employes.length;i++){
-            System.out.print("Id : ");
-            int id=input.nextInt();
-            // efface memoire next
-            input.nextLine();
+        ArrayList<Users> users=new ArrayList<>();
+        users.add(new Users(UUID.randomUUID().toString(), "Lafont", "Cécile", "dslgjlg@sdgh.fr", "lkehklest"));
+        users.add(new Users(UUID.randomUUID().toString(), "shqh", "dqfjhqdnn", "ykyufh,x@sdgh.fr", "ugsjljkrkls"));
+        users.add(new Users(UUID.randomUUID().toString(), "rdwfhd", "dhhhnsf", "uimggjl@dsg.fr", "sffhnffn"));
+        users.add(new Users(UUID.randomUUID().toString(), "kkjgfjsj", "jsjyfdgj", "dslgfjlg@sdgh.fr", "lkehsklest"));
+        users.add(new Users(UUID.randomUUID().toString(), "ultletlu", "sjsjypsj", "dslgjklg@sdgh.fr", "lkeehklest"));
 
-            System.out.print("Votre nom : ");
-            String nom=input.nextLine();
+        Scanner input = new Scanner(System.in);
 
-            System.out.print("Votre prenom : ");
-            String prenom=input.nextLine();
+        System.out.println("- Souhaitez-vous créer un compte ? -\nTapez oui ou non");
+        String response = input.nextLine();
 
-//          Employe employe=new Employe(id,prenom,nom);
-//          employes[i]=employe;
+        if (response.equals("oui") || response.equals("O") || response.equals("o")){
+            String id = UUID.randomUUID().toString();
 
-            employes[i]=new Employe(id,prenom,nom);
+            System.out.println("Nom : ");
+            String lastname = input.nextLine();
+
+            System.out.println("Prénom : ");
+            String firstname = input.nextLine();
+
+            System.out.println("Email : ");
+            String email=input.nextLine();
+            while (!Validation.isEmail(email)){
+                System.out.println("Ceci n'est pas un email");
+                email = input.nextLine();
+            }
+
+            System.out.println("Mdp : ");
+            String mdp = input.nextLine();
+            while (!Validation.isLength(mdp)){
+                System.out.println("Votre email doit contenir entre 8 et 20 caractères");
+                mdp = input.nextLine();
+            }
+            if (users.add(new Users(id, lastname, firstname, email, mdp))){
+                System.out.println("Votre compte compte a bien été créé !");
+            }
         }
 
+        while (i<=2){
+            i++;
+            System.out.println("- Vous connecter - \nIdentifiant : ");
+            String email = input.nextLine();
 
-//      Affichage de tous les employés
-        System.out.println(Arrays.toString(employes));
+            System.out.println("Mot de passe : ");
+            String mdp=input.nextLine();
 
-//      Affichage de chaque employé de manière individuelle : Mauvaise pratique
-        System.out.println("Employé[0] : "+employes[0]);
-
-//      Affichage de chaque employé de manière individuelle : Bonne pratique
-        for(int i=0;i<employes.length;i++){
-//          System.out.println("Employé["+i+"] : "+employes[i]);
-            System.out.println("Employé["+i+"] : "+employes[i].getLastName());
+            if (Validation.checkUser(users, email, mdp)){
+                break;
+            }
         }
-
-//      Simple liste
-//        String[] fruits=new String[3];
-//        fruits[0]="pommes";
-//        fruits[1]="bananes";
-//        fruits[2]="oranges";
-//
-//        System.out.println(Arrays.toString(fruits));
-
-//        Employe chris=new Employe(3,"Jean","Zozor");
-//        System.out.println(chris);
+        if (i==3){
+            System.out.println("Trop de saisies erronées");
+        }
     }
 }
