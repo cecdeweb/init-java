@@ -1,42 +1,58 @@
 package fr.m2i;
 
-import java.util.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        var input=new Scanner(System.in);
+        System.out.print("Combien d'employés souhaitez-vous enregistrer?");
+        var nombreEmployes=input.nextInt();
 
-        /* TP6
-         *   Ecrire un programme qui permet à l’utilisateur de saisir un entier entre 1 et 12 et qui affiche le nom du mois correspondant.
-         *   Ex:
-         *   Mois : 4
-         *   Résult : Avril
-         * */
-        // gestion des erreurs a améliorer
+        Employe[] employes=new Employe[nombreEmployes];
+        employes[0]=new Employe(1,"Christian","Lisangola");
 
-        int numberMonth = 0;
+        for(int i=0;i<employes.length;i++){
+            System.out.print("Id : ");
+            int id=input.nextInt();
+            // efface memoire next
+            input.nextLine();
 
-        // instanciation tableau des mois
-        HashMap<Integer, String> month = new HashMap<Integer, String>();
-        String[] monthTable = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Decembre"};
-        // incrementation automatique des cles en fonction de mes valeurs mois
-        for (int i = 0; i < monthTable.length; i++) {
-            month.put(i + 1, monthTable[i]);
+            System.out.print("Votre nom : ");
+            String nom=input.nextLine();
+
+            System.out.print("Votre prenom : ");
+            String prenom=input.nextLine();
+
+//          Employe employe=new Employe(id,prenom,nom);
+//          employes[i]=employe;
+
+            employes[i]=new Employe(id,prenom,nom);
         }
 
-        // exception des donnees saisies
-        while (true) {
-            try (Scanner scan = new Scanner(System.in);) {
-                System.out.println("Veuillez saisir un chiffre entre 1 et 12 pour obtenir le mois correspondant :");
-                numberMonth = scan.nextInt();
-                if (numberMonth >= 1 && numberMonth <= 12) {
-                    break;
-                }
-                System.out.println("Merci de saisir un chiffre entre 1 et 12 !");
-            }catch(InputMismatchException e){
-                System.out.println("Merci de saisir seulement un chiffre entre 1 et 12 !");
-            }
+
+//      Affichage de tous les employés
+        System.out.println(Arrays.toString(employes));
+
+//      Affichage de chaque employé de manière individuelle : Mauvaise pratique
+        System.out.println("Employé[0] : "+employes[0]);
+
+//      Affichage de chaque employé de manière individuelle : Bonne pratique
+        for(int i=0;i<employes.length;i++){
+//          System.out.println("Employé["+i+"] : "+employes[i]);
+            System.out.println("Employé["+i+"] : "+employes[i].getLastName());
         }
-        // affichage de la reponse
-        System.out.println("Le mois correspondant au nombre " + numberMonth + " est : " + month.get(numberMonth));
+
+//      Simple liste
+//        String[] fruits=new String[3];
+//        fruits[0]="pommes";
+//        fruits[1]="bananes";
+//        fruits[2]="oranges";
+//
+//        System.out.println(Arrays.toString(fruits));
+
+//        Employe chris=new Employe(3,"Jean","Zozor");
+//        System.out.println(chris);
     }
 }
