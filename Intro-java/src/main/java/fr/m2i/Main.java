@@ -1,42 +1,42 @@
 package fr.m2i;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-        /*
-         * Ecrivez un programme Java qui permet de résoudre une équation du 2nd degré de la forme ax2+bx+c = 0.
-         * L'utilisateur devra fournir a,b,c à partir du clavier, ensuite le programme lui donnera la solution
-         * Principe du fonctionnement d'une équation du 2nd degré:
-         * https://www.maths-et-tiques.fr/telech/Secondegre2ESL.pdf
+        /* TP6
+         *   Ecrire un programme qui permet à l’utilisateur de saisir un entier entre 1 et 12 et qui affiche le nom du mois correspondant.
+         *   Ex:
+         *   Mois : 4
+         *   Résult : Avril
          * */
+        // gestion des erreurs a améliorer
 
-        Scanner scan = new Scanner(System.in);
+        int numberMonth = 0;
 
-        double a, b, c;
-        double delta;
-        double x1, x2;
+        // instanciation tableau des mois
+        HashMap<Integer, String> month = new HashMap<Integer, String>();
+        String[] monthTable = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Novembre", "Decembre"};
+        // incrementation automatique des cles en fonction de mes valeurs mois
+        for (int i = 0; i < monthTable.length; i++) {
+            month.put(i + 1, monthTable[i]);
+        }
 
-        while (true) { // pour eviter de relancer la console pour tester code
-            System.out.println("Donnez la valeur de >>> a <<< dans l'équation ax2 + bx + c : ");
-            a = scan.nextInt();
-            System.out.println("Donnez la valeur de >>> b <<< dans l'équation ax2 + bx + c : ");
-            b = scan.nextInt();
-            System.out.println("Donnez la valeur de >>> c <<< dans l'équation ax2 + bx + c : ");
-            c = scan.nextInt();
-            delta = (b * b) - (4 * a * c);
-
-            if (delta == 0) {
-                x1 = -(b / (2 * a));
-                System.out.println("L'équation ax2 + bx + c = 0 a une solution unique : x1 = " + x1);
-            } else if (delta > 0) {
-                x1 = ((-b - Math.sqrt(delta)) / 2 * a);
-                x2 = ((-b + Math.sqrt(delta)) / 2 * a);
-                System.out.println("L'équation ax2 + bx + c = 0 a deux solutions distinctes : x1 = " + x1 + "  et  x2 = " + x2);
-            } else {
-                System.out.println("L'équation ax2 + bx + c = 0 n'a pas de solution réelle");
+        // exception des donnees saisies
+        while (true) {
+            try (Scanner scan = new Scanner(System.in);) {
+                System.out.println("Veuillez saisir un chiffre entre 1 et 12 pour obtenir le mois correspondant :");
+                numberMonth = scan.nextInt();
+                if (numberMonth >= 1 && numberMonth <= 12) {
+                    break;
+                }
+                System.out.println("Merci de saisir un chiffre entre 1 et 12 !");
+            }catch(InputMismatchException e){
+                System.out.println("Merci de saisir seulement un chiffre entre 1 et 12 !");
             }
         }
+        // affichage de la reponse
+        System.out.println("Le mois correspondant au nombre " + numberMonth + " est : " + month.get(numberMonth));
     }
 }
