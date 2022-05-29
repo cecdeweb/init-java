@@ -1,0 +1,22 @@
+.box {
+  padding: 20px 30px;
+  background-color: #3498db ;
+  color:white;
+  font-weight:900;
+  font-size:60px;
+  cursor:pointer;
+  animation: hinge 2.2s 1 ease-in-out;
+  transform-origin:top left;
+  border-radius:5px;
+}
+  @keyframes hinge {
+  20%,60% {
+    transform: rotate(70deg);
+  } 40%,80% {
+    transform: rotate(55deg);
+    opacity:1;
+  } 100% {
+    transform: translateY(600px);
+    opacity:0;
+  }
+}
