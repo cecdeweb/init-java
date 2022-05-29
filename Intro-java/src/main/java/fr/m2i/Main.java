@@ -22,7 +22,6 @@ public class Main {
             System.out.print("Votre nom : ");
             String nom=input.nextLine();
 
-
             System.out.print("Votre prenom : ");
             String prenom=input.nextLine();
 
