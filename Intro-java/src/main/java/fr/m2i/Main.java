@@ -5,32 +5,38 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-/*
-*       Ecrivez un programme Java qui lit un nombre et
-*       indique s'il est positif, négatif ou s'il vaut zéro
-*       et s'il est pair ou impair.
-*/
-
-        int number=0;
+        /*
+         * Ecrivez un programme Java qui permet de résoudre une équation du 2nd degré de la forme ax2+bx+c = 0.
+         * L'utilisateur devra fournir a,b,c à partir du clavier, ensuite le programme lui donnera la solution
+         * Principe du fonctionnement d'une équation du 2nd degré:
+         * https://www.maths-et-tiques.fr/telech/Secondegre2ESL.pdf
+         * */
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Entrer un nombre entier : ");
-        number=scan.nextInt();
+        double a, b, c;
+        double delta;
+        double x1, x2;
 
-        //positif, négatif, pair et impair
-        if (number<0 && number%2==0){
-            System.out.println("Votre nombre est négatif et pair.");
-        } else if (number<0 && number%2!=0){
-            System.out.println("Votre nombre est négatif et impair.");
-        } else if (number>0 && number%2!=0){
-            System.out.println("Votre nombre est positif et impair.");
-        } else if (number>0 && number%2==0){
-            System.out.println("Votre nombre est positif et pair.");
-        } else if (number==0){
-            System.out.println("Le nombre est zéro (et il est pair).");
-        } else {
-            System.out.println("Votre nombre n'est pas un entier.");
+        while (true) { // pour eviter de relancer la console pour tester code
+            System.out.println("Donnez la valeur de >>> a <<< dans l'équation ax2 + bx + c : ");
+            a = scan.nextInt();
+            System.out.println("Donnez la valeur de >>> b <<< dans l'équation ax2 + bx + c : ");
+            b = scan.nextInt();
+            System.out.println("Donnez la valeur de >>> c <<< dans l'équation ax2 + bx + c : ");
+            c = scan.nextInt();
+            delta = (b * b) - (4 * a * c);
+
+            if (delta == 0) {
+                x1 = -(b / (2 * a));
+                System.out.println("L'équation ax2 + bx + c = 0 a une solution unique : x1 = " + x1);
+            } else if (delta > 0) {
+                x1 = ((-b - Math.sqrt(delta)) / 2 * a);
+                x2 = ((-b + Math.sqrt(delta)) / 2 * a);
+                System.out.println("L'équation ax2 + bx + c = 0 a deux solutions distinctes : x1 = " + x1 + "  et  x2 = " + x2);
+            } else {
+                System.out.println("L'équation ax2 + bx + c = 0 n'a pas de solution réelle");
+            }
         }
     }
 }
