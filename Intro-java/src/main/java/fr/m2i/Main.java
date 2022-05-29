@@ -32,6 +32,5 @@ public class Main {
         } else {
             System.out.println("Votre nombre n'est pas un entier.");
         }
-
     }
 }
