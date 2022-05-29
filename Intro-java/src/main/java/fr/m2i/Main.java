@@ -4,24 +4,24 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
-/**
-*  Ecrire un programme Java qui demande à l'utilisateur de saisir la valeur du diamètre, et qui ensuite va effectuer le calcul de la surface.
-*  Surface = Rayon x Rayon x PI;
-*  Rayon = Diamètre / 2
-**/
+/***
+ * Ecrire un programme Java qui demande à l'utilisateur de saisir son nom,
+ * prenom et age, et qui ensuite va afficher le message : "Vous vous
+ * appelez <prenom> <nom>, et vous avez <age> ans"
+ ***/
         Scanner scanner = new Scanner(System.in);
 
-        double rayon;
-        double surface = 0;
-        double pi = Math.PI;
+        String name = "";
+        String firstname = "";
+        int age = 0;
 
-        System.out.print("Entrez le rayon du cercle : ");
-        rayon = scanner.nextInt();
-        surface = pi * rayon * rayon;
-        System.out.println("La surface du cercle est : "+surface);
-
-        // voir pour afficher un float à 2 décimal en sortie
+        System.out.println("Quel est votre nom ?");
+        name = scanner.nextLine();
+        System.out.println("Quel est votre prénom ?");
+        firstname = scanner.nextLine();
+        System.out.println("Quel est votre age ?");
+        age = scanner.nextInt();
+        System.out.println("Vous vous appelez " + firstname + " " + name + ", et vous avez " + age + " ans");
 
     }
 }
